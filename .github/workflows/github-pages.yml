@@ -1,0 +1,65 @@
+name: Publier sur GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    name: Tester et compiler Angular
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: read
+    steps:
+      - name: Recuperer le code
+        uses: actions/checkout@v6
+
+      - name: Installer Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          cache: npm
+
+      - name: Installer les dependances
+        run: npm ci
+
+      - name: Tester le tirage
+        run: npm test
+
+      - name: Lire la configuration GitHub Pages
+        id: pages
+        uses: actions/configure-pages@v5
+
+      - name: Compiler pour le chemin de publication
+        env:
+          PAGES_BASE_PATH: ${{ steps.pages.outputs.base_path }}
+        run: npm run build -- --base-href "${PAGES_BASE_PATH}/"
+
+      - name: Preparer le site a publier
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: dist/match-generator/browser
+
+  deploy:
+    name: Publier le site
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deployer sur GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
