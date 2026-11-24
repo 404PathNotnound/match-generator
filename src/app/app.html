@@ -1,0 +1,240 @@
+<div class="app-shell" [class.presentation]="screenMode()">
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="Palet Club, accueil"
+      ><span class="brand-symbol" aria-hidden="true">◉</span
+      ><span>PALET<span class="brand-light">CLUB</span></span></a
+    >
+    <div class="topbar-right">
+      <button type="button" class="button outline" (click)="toggleScreen()">
+        <span aria-hidden="true">⛶</span>
+        {{ screenMode() ? 'Quitter la projection' : 'Mode projection' }}
+      </button>
+    </div>
+  </header>
+  <div class="workspace">
+    <main>
+      <section class="draw-toolbar" aria-label="Préparation du tirage">
+        <div class="stats">
+          <div>
+            <strong>{{ selectedPlayers().length }}</strong><span>joueurs sélectionnés</span>
+          </div>
+          <span class="stat-divider"></span>
+          <div>
+            <strong>{{ boardCount() }}</strong><span>planches prévues</span>
+          </div>
+          @if (waitingCount()) {
+            <div class="waiting-stat">
+              <strong>{{ waitingCount() }}</strong><span>en attente</span>
+            </div>
+          }
+        </div>
+        <button
+          type="button"
+          class="button primary generate"
+          [disabled]="selectedPlayers().length < 2"
+          (click)="generate()"
+        >
+          <span aria-hidden="true">⤨</span> {{ draw() ? 'Nouveau tirage' : 'Générer le tirage'
+          }}<span aria-hidden="true">↗</span>
+        </button>
+      </section>
+      @if (storageIssue()) {
+        <p class="warning" role="alert">
+          La sauvegarde locale est indisponible ou a été réinitialisée. Garde cette page ouverte
+          pour conserver ta liste.
+        </p>
+      }
+      @if (changed()) {
+        <p class="warning" role="status">
+          La sélection a changé. Le tirage affiché reste celui de la manche précédente. Génère un
+          nouveau tirage pour l’actualiser.
+        </p>
+      }
+      <div class="section-title">
+        <h2>{{ draw() ? 'Les rencontres' : 'Qui joue ce soir ?' }}</h2>
+        <span>{{ drawSummary() }}</span>
+      </div>
+      @if (draw(); as current) {
+        <section
+          #boardGrid
+          class="board-grid"
+          [style.--projection-tracks]="projection().tracks"
+          [style.--projection-rows]="projection().rows"
+          [class.many]="current.matches.length > 6"
+          [class.ten]="current.matches.length > 9"
+          aria-label="Rencontres du tirage"
+        >
+          @for (match of current.matches; track match.board; let index = $index) {
+            <article
+              class="board-card"
+              [style.--projection-span]="projectionSpan(index)"
+              [appFitBoardNames]="screenMode()"
+              [nameFitContent]="match"
+            >
+              <div class="board-label">
+                <span>PLANCHE</span><strong>{{ match.board.toString().padStart(2, '0') }}</strong>
+                @if (match.format === 'singles') {
+                  <span class="match-format">1 CONTRE 1</span>
+                } @else {
+                  <span class="board-icon" aria-hidden="true">◉</span>
+                }
+              </div>
+              <div class="matchup">
+                <div class="team team-a">
+                  @for (player of match.teams[0]; track player.id) {
+                    @let label = boardNameParts(player.name);
+                    <span class="player-label" [title]="player.name">
+                      {{ label.prefix
+                      }}<span class="name-ending"
+                        >{{ label.ending }}
+                        @if (label.initial) {
+                          <small class="family-initial">{{ label.initial }}.</small>
+                        }
+                      </span>
+                    </span>
+                  }
+                </div>
+                <div class="versus"><span></span>VS<span></span></div>
+                <div class="team team-b">
+                  @for (player of match.teams[1]; track player.id) {
+                    @let label = boardNameParts(player.name);
+                    <span class="player-label" [title]="player.name">
+                      {{ label.prefix
+                      }}<span class="name-ending"
+                        >{{ label.ending }}
+                        @if (label.initial) {
+                          <small class="family-initial">{{ label.initial }}.</small>
+                        }
+                      </span>
+                    </span>
+                  }
+                </div>
+              </div>
+            </article>
+          }
+        </section>
+        @if (current.waiting.length) {
+          <section class="waiting-panel">
+            <span class="waiting-icon" aria-hidden="true">◷</span>
+            <div>
+              <h3>Personne Seul (Péco)</h3>
+              <p>
+                @for (player of current.waiting; track player.id; let last = $last) {
+                  {{ boardName(player.name) }}{{ last ? '' : ' · ' }}
+                }
+              </p>
+            </div>
+            <span>{{ current.waiting.length }} en attente</span>
+          </section>
+        }
+      } @else {
+        <section class="empty-state">
+          <div class="empty-art" aria-hidden="true">
+            <div class="mini-board"><i></i><i></i><i></i><i></i></div>
+            <span class="spark">✳</span>
+          </div>
+          <p class="eyebrow">ON JOUE ?</p>
+        </section>
+      }
+      <footer class="main-footer"></footer>
+    </main>
+    <aside class="roster" aria-label="Liste des membres">
+      <div class="roster-heading">
+        <div>
+          <h2>
+            Les joueurs <span>{{ members().length }}</span>
+          </h2>
+        </div>
+      </div>
+
+      <form class="member-form" (ngSubmit)="addMember()">
+        <label for="new-name">Ajouter un joueur</label>
+        <input
+          id="new-name"
+          name="newName"
+          type="text"
+          [(ngModel)]="newName"
+          maxlength="40"
+          required
+          placeholder="Prénom ou Prénom Nom"
+        />
+        <button class="button primary" type="submit">
+          Ajouter <span aria-hidden="true">＋</span>
+        </button>
+      </form>
+
+      <label class="search"
+        ><span aria-hidden="true">⌕</span
+        ><input
+          type="search"
+          aria-label="Rechercher un joueur"
+          placeholder="Rechercher un prénom…"
+          [(ngModel)]="search"
+          (ngModelChange)="query.set($event)"
+        /><kbd>⌕</kbd></label
+      >
+      <div class="selection-actions">
+        <span>{{ selectedPlayers().length }} sélectionnés</span>
+        <div>
+          <button type="button" (click)="selectAll()" [disabled]="!members().length">Tout</button
+          ><span> / </span
+          ><button type="button" (click)="clearSelection()" [disabled]="!selected().length">
+            Aucun
+          </button>
+        </div>
+      </div>
+      <div class="players-list">
+        @for (player of visibleMembers(); track player.id) {
+          <div class="member-row">
+            <input
+              #memberCheckbox
+              type="checkbox"
+              [id]="'member-' + player.id"
+              [checked]="selected().includes(player.id)"
+              (change)="setSelected(player.id, memberCheckbox.checked)"
+            />
+            <label [for]="'member-' + player.id">{{ player.name }}</label>
+            @if (managing()) {
+              <button
+                type="button"
+                class="remove"
+                (click)="removeMember(player)"
+                [attr.aria-label]="'Supprimer ' + player.name"
+              >
+                ×
+              </button>
+            }
+          </div>
+        } @empty {
+          <p>
+            {{
+              members().length
+                ? 'Aucun joueur trouvé.'
+                : 'Ajoute les membres du club pour commencer.'
+            }}
+          </p>
+        }
+      </div>
+      <div class="roster-footer">
+        <span aria-hidden="true">↳</span>
+        <p>
+          Clique sur un prénom pour l’inclure au tirage.<br /><strong
+            >2 joueurs minimum pour lancer une partie.</strong
+          >
+        </p>
+      </div>
+    </aside>
+  </div>
+  <p class="sr-only" aria-live="polite">{{ notice() }}</p>
+  @if (notice()) {
+    <div class="toast" role="status">
+      <span>{{ notice() }}</span><button
+        type="button"
+        (click)="notice.set('')"
+        aria-label="Fermer le message"
+      >
+        ×
+      </button>
+    </div>
+  }
+</div>

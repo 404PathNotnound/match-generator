@@ -1,0 +1,1051 @@
+:host {
+  display: block;
+}
+.topbar {
+  height: 70px;
+  background: #fff;
+  border-bottom: 1px solid #e4e8e1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 38px;
+}
+.brand {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  text-decoration: none;
+  font:
+    800 24px 'Manrope',
+    sans-serif;
+  letter-spacing: -1px;
+}
+.brand-light {
+  font-weight: 500;
+  margin-left: 4px;
+}
+.brand small {
+  display: block;
+  font:
+    600 8px 'DM Sans',
+    sans-serif;
+  letter-spacing: 2px;
+  margin-top: 5px;
+}
+.brand-symbol {
+  background: #244c3a;
+  color: #ecf1bb;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 49px;
+  font-size: 32px;
+}
+.topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+.session {
+  font-size: 12px;
+  color: #69766d;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.session i,
+.round-dot,
+.main-footer i {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #739d69;
+  display: inline-block;
+}
+.button {
+  border: 0;
+  border-radius: 9px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 13px 17px;
+  font-size: 12px;
+  font-weight: 650;
+  white-space: nowrap;
+}
+.outline {
+  border: 1px solid #dfe5db;
+  background: #fff;
+  color: #35463d;
+}
+.outline:hover {
+  background: #f1f5ea;
+}
+.outline > span {
+  font-size: 20px;
+}
+.primary {
+  background: #284e3b;
+  color: #fff;
+}
+.primary:hover:not(:disabled) {
+  background: #193c2b;
+}
+.workspace {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 320px;
+  min-height: calc(100dvh - 100px);
+}
+main {
+  padding: 38px 36px 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+.heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+.eyebrow {
+  font-size: 10px;
+  letter-spacing: 1.7px;
+  font-weight: 700;
+  color: #829071;
+  margin: 0 0 10px;
+}
+h1 {
+  font:
+    750 clamp(26px, 2.6vw, 42px)/1.2 'Manrope',
+    sans-serif;
+  letter-spacing: -1.5px;
+  margin: 0 0 10px;
+}
+.subtitle {
+  font-size: 13px;
+  color: #7b847a;
+  margin: 0;
+}
+.round-tag {
+  font-size: 10px;
+  background: #eaf0e0;
+  border: 1px solid #dfe7d1;
+  border-radius: 30px;
+  padding: 9px 12px;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #60794e;
+}
+.draw-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 18px;
+  border: 1px solid #e1e5db;
+  border-radius: 13px;
+  padding: 19px 22px;
+  background: #fff;
+  margin-bottom: 29px;
+}
+.stats {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+.stats > div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.stats strong {
+  font:
+    750 27px 'Manrope',
+    sans-serif;
+  letter-spacing: -1px;
+}
+.stats span:not(.stat-divider) {
+  font-size: 10px;
+  color: #87907f;
+  max-width: 65px;
+  line-height: 1.5;
+}
+.stat-divider {
+  height: 31px;
+  width: 1px;
+  background: #e4e7df;
+}
+.waiting-stat {
+  color: #a26936;
+}
+.generate {
+  padding: 15px 19px;
+}
+.generate > span:first-child {
+  font-size: 20px;
+}
+.generate > span:last-child {
+  margin-left: 12px;
+  font-size: 18px;
+}
+.section-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+  gap: 12px;
+}
+.section-title h2 {
+  font:
+    700 16px 'Manrope',
+    sans-serif;
+  margin: 0;
+}
+.section-title > span {
+  font-size: 10px;
+  color: #90978b;
+}
+.board-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 17px;
+}
+.board-card {
+  background: #fff;
+  border: 1px solid #e0e5d9;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 3px 5px #203c2710;
+}
+.board-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 19px;
+  background: #edf1e5;
+  border-bottom: 1px solid #e2e8d9;
+}
+.board-label > span:first-child {
+  font-size: 9px;
+  letter-spacing: 2px;
+  font-weight: 650;
+  color: #77836c;
+}
+.board-label strong {
+  font:
+    750 22px 'Manrope',
+    sans-serif;
+  color: #365638;
+}
+.board-icon {
+  margin-left: auto;
+  color: #a8b78b;
+  font-size: 20px;
+}
+.matchup {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 30px minmax(0, 1fr);
+  align-items: center;
+  gap: 8px;
+  padding: 24px 17px 27px;
+}
+.team {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  font:
+    750 clamp(20px, 1.8vw, 34px)/1.3 'Manrope',
+    sans-serif;
+  letter-spacing: -0.7px;
+  min-width: 0;
+}
+.team span {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  text-align: center;
+}
+.team-b {
+  color: #a46138;
+}
+.versus {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 9px;
+  font-size: 9px;
+  color: #a5ab9d;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+.versus span {
+  height: 16px;
+  width: 1px;
+  background: #e3e7dd;
+}
+.waiting-panel {
+  display: flex;
+  gap: 13px;
+  align-items: center;
+  margin-top: 20px;
+  background: #f0ede3;
+  border: 1px solid #e7dfcd;
+  border-radius: 12px;
+  padding: 17px 20px;
+}
+.waiting-icon {
+  font-size: 26px;
+  color: #a98c52;
+}
+.waiting-panel h3 {
+  margin: 0 0 5px;
+  font-size: 12px;
+}
+.waiting-panel p {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+}
+.waiting-panel > span:last-child {
+  margin-left: auto;
+  font-size: 10px;
+  color: #9c8c6b;
+  white-space: nowrap;
+}
+.main-footer {
+  margin-top: auto;
+  padding: 28px 0 21px;
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  font-size: 9px;
+  color: #8d9686;
+}
+.main-footer > span:first-child {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.main-footer > span:last-child {
+  font-size: 8px;
+  letter-spacing: 1px;
+}
+.roster {
+  background: #fff;
+  border-left: 1px solid #e2e7dc;
+  padding: 30px 23px 0;
+  display: flex;
+  flex-direction: column;
+  max-height: calc(100dvh - 100px);
+  position: sticky;
+  top: 0;
+}
+.roster-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+.roster .eyebrow {
+  font-size: 8px;
+  letter-spacing: 1.4px;
+}
+.roster h2 {
+  font:
+    750 22px 'Manrope',
+    sans-serif;
+  margin: 0;
+  letter-spacing: -0.6px;
+}
+.roster h2 span {
+  display: inline-grid;
+  place-items: center;
+  font:
+    600 10px 'DM Sans',
+    sans-serif;
+  background: #f0f2eb;
+  border-radius: 6px;
+  min-width: 24px;
+  height: 22px;
+  margin-left: 6px;
+  vertical-align: middle;
+  color: #7f8b72;
+}
+.icon-button {
+  border: 1px solid #e4e8df;
+  background: white;
+  border-radius: 8px;
+  height: 34px;
+  width: 34px;
+  font-size: 19px;
+  color: #758367;
+}
+.icon-button.active {
+  background: #e5edd8;
+}
+.search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #f7f8f4;
+  border: 1px solid #e8ebe2;
+  border-radius: 8px;
+  padding: 9px 11px;
+  color: #929c85;
+}
+.search > span {
+  font-size: 24px;
+  line-height: 20px;
+}
+.search input {
+  width: 100%;
+  min-width: 0;
+  border: none;
+  background: none;
+  font-size: 11px;
+  outline-offset: 7px;
+  color: #334336;
+}
+.search input::placeholder {
+  color: #9ba391;
+}
+.search kbd {
+  font-size: 10px;
+  color: #b3b9a9;
+}
+.selection-actions {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  color: #8a947d;
+  padding: 18px 0 12px;
+}
+.selection-actions button {
+  border: 0;
+  background: none;
+  padding: 0 2px;
+  color: #54734a;
+  font-size: 10px;
+  font-weight: 600;
+}
+.selection-actions button:hover {
+  text-decoration: underline;
+}
+.players-list {
+  overflow: auto;
+  flex: 1;
+  min-height: 100px;
+  padding-bottom: 12px;
+  scrollbar-width: thin;
+  scrollbar-color: #d9dfd1 transparent;
+}
+.member-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 0;
+  border-bottom: 1px solid #e4e8e1;
+}
+.member-row input {
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  flex-shrink: 0;
+  accent-color: #284e3b;
+  cursor: pointer;
+}
+.member-row label {
+  flex: 1;
+  font-size: 14px;
+  overflow-wrap: anywhere;
+  cursor: pointer;
+}
+.roster-footer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-top: 1px solid #ebeee5;
+  padding: 16px 0;
+  color: #a2ab96;
+}
+.roster-footer > span {
+  font-size: 22px;
+}
+.roster-footer p {
+  margin: 0;
+  font-size: 9px;
+  line-height: 1.8;
+}
+.roster-footer strong {
+  font-weight: 400;
+  color: #7f8d71;
+}
+.empty-state {
+  flex: 1;
+  min-height: 440px;
+  border: 1px dashed #d9e0cf;
+  border-radius: 17px;
+  background: radial-gradient(ellipse at center, #fdfef8 0%, #f3f6eb 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 35px 20px;
+}
+.empty-state h2 {
+  font:
+    750 30px/1.3 'Manrope',
+    sans-serif;
+  letter-spacing: -1px;
+  margin: 0 0 12px;
+}
+.empty-state > p:not(.eyebrow) {
+  font-size: 12px;
+  line-height: 1.9;
+  color: #8a947d;
+  margin: 0;
+}
+.empty-art {
+  position: relative;
+  margin-bottom: 14px;
+}
+.mini-board {
+  height: 84px;
+  width: 118px;
+  background: #e5cba3;
+  border: 7px solid #eddbbf;
+  border-radius: 8px;
+  transform: rotate(-9deg);
+  box-shadow: 8px 8px 0 #e4eacb;
+  position: relative;
+}
+.mini-board:before {
+  content: '';
+  position: absolute;
+  width: 34px;
+  height: 34px;
+  border: 1px solid #c8ae87;
+  border-radius: 50%;
+  left: 33px;
+  top: 17px;
+}
+.mini-board i {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: #405d43;
+  box-shadow: 0 2px 0 #263e2a;
+}
+.mini-board i:nth-child(1) {
+  left: 15px;
+  top: 16px;
+}
+.mini-board i:nth-child(2) {
+  left: 34px;
+  top: 40px;
+}
+.mini-board i:nth-child(3) {
+  right: 16px;
+  top: 21px;
+  background: #ad7049;
+  box-shadow: 0 2px 0 #885431;
+}
+.mini-board i:nth-child(4) {
+  right: 18px;
+  bottom: 10px;
+  background: #ad7049;
+  box-shadow: 0 2px 0 #885431;
+}
+.spark {
+  position: absolute;
+  right: -24px;
+  top: -16px;
+  font-size: 30px;
+  color: #a7b96c;
+}
+.steps {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 30px;
+  font-size: 9px;
+  color: #7e8c70;
+}
+.steps > span {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.steps b {
+  border: 1px solid #d8e1c9;
+  border-radius: 50%;
+  height: 20px;
+  width: 20px;
+  display: grid;
+  place-items: center;
+  font-size: 9px;
+  font-weight: 500;
+}
+.step-line {
+  width: 22px;
+  height: 1px;
+  background: #dce3d1;
+}
+.roster-empty {
+  text-align: center;
+  padding: 35px 10px;
+}
+.roster-empty > span {
+  font-size: 30px;
+  color: #a6b890;
+}
+.roster-empty h3 {
+  font-size: 15px;
+  line-height: 1.5;
+}
+.roster-empty p {
+  font-size: 12px;
+  color: #8c9881;
+  line-height: 1.8;
+}
+
+.member-form {
+  background: #f7f9f2;
+  border: 1px solid #e2e9d8;
+  border-radius: 10px;
+  padding: 12px;
+  margin-bottom: 16px;
+  max-height: 36dvh;
+  overflow: auto;
+}
+.member-form label {
+  display: block;
+  font-size: 12px;
+  font-weight: 650;
+  margin-bottom: 8px;
+}
+.member-form input {
+  width: 100%;
+  border: 1px solid #dce3d0;
+  border-radius: 7px;
+  padding: 9px;
+  font-size: 11px;
+}
+.member-form small,
+.member-form p {
+  font-size: 9px;
+  color: #829172;
+  line-height: 1.6;
+  display: block;
+}
+.member-form .button {
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px;
+}
+.member-form p {
+  margin: 9px 0 0;
+}
+.remove {
+  flex-shrink: 0;
+  border: 0;
+  background: #fbefe9;
+  border-radius: 6px;
+  width: 23px;
+  height: 28px;
+  color: #a46138;
+}
+.warning {
+  background: #fff3d7;
+  border: 1px solid #eedba9;
+  border-radius: 8px;
+  padding: 12px 15px;
+  font-size: 12px;
+  line-height: 1.5;
+  margin: 0 0 20px;
+}
+.toast {
+  position: fixed;
+  bottom: 20px;
+  left: 22px;
+  max-width: min(520px, calc(100vw - 44px));
+  background: #263f30;
+  color: white;
+  border: 1px solid #56754e;
+  border-radius: 12px;
+  padding: 14px 17px;
+  box-shadow: 0 5px 20px #122c2525;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 12px;
+  line-height: 1.5;
+  z-index: 10;
+}
+.toast button {
+  background: none;
+  border: 0;
+  color: #d5e5c4;
+  font-size: 22px;
+}
+@media (min-width: 1700px) {
+  .board-grid.many {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .workspace {
+    grid-template-columns: minmax(0, 1fr) 350px;
+  }
+  .team {
+    font-size: 30px;
+  }
+}
+@media (max-width: 1150px) {
+  main {
+    padding: 28px 23px 0;
+  }
+  .workspace {
+    grid-template-columns: minmax(0, 1fr) 280px;
+  }
+  .roster {
+    padding: 26px 17px 0;
+  }
+  .heading {
+    flex-wrap: wrap;
+  }
+  .stats {
+    gap: 13px;
+  }
+  .stats strong {
+    font-size: 24px;
+  }
+  .draw-toolbar {
+    padding: 16px;
+    flex-wrap: wrap;
+  }
+  .generate {
+    flex: 1;
+  }
+  .team {
+    font-size: 21px;
+  }
+  .matchup {
+    padding: 19px 3px;
+    gap: 4px;
+  }
+  .main-footer > span:last-child {
+    display: none;
+  }
+  .topbar {
+    padding: 0 25px;
+  }
+  .stats .waiting-stat span {
+    max-width: 50px;
+  }
+}
+@media (max-width: 760px) {
+  .topbar {
+    height: 78px;
+    padding: 0 17px;
+  }
+  .brand {
+    font-size: 19px;
+  }
+  .brand-symbol {
+    width: 37px;
+    height: 40px;
+  }
+  .brand small {
+    font-size: 6px;
+    letter-spacing: 1.5px;
+  }
+  .session {
+    display: none;
+  }
+  .outline {
+    padding: 8px 10px;
+    font-size: 10px;
+    gap: 6px;
+  }
+  .workspace {
+    display: flex;
+    flex-direction: column;
+  }
+  .roster {
+    order: -1;
+    position: static;
+    max-height: 440px;
+    padding: 20px;
+    border-left: 0;
+    border-bottom: 1px solid #e1e7d8;
+  }
+  .roster-heading {
+    margin-bottom: 16px;
+  }
+  .players-list {
+    min-height: 120px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 8px;
+  }
+  .roster-empty {
+    grid-column: 1/-1;
+    padding: 5px 15px;
+  }
+  .roster-empty > span {
+    display: none;
+  }
+  .roster-empty h3 {
+    margin: 10px 0;
+  }
+  .roster-footer {
+    padding: 9px 0;
+  }
+  .roster-footer p br {
+    display: none;
+  }
+  .roster-footer strong {
+    margin-left: 4px;
+  }
+  .member-form {
+    max-height: 220px;
+  }
+  .heading {
+    gap: 18px;
+    margin-bottom: 23px;
+  }
+  main {
+    padding: 25px 17px 0;
+  }
+  .board-grid {
+    gap: 12px;
+  }
+  .matchup {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    padding: 15px;
+  }
+  .versus {
+    flex-direction: row;
+    gap: 9px;
+  }
+  .versus span {
+    width: 20px;
+    height: 1px;
+  }
+  .team {
+    font-size: 24px;
+    gap: 3px;
+  }
+  .board-label {
+    padding: 8px 12px;
+    gap: 6px;
+  }
+  .board-label > span:first-child {
+    font-size: 8px;
+  }
+  .board-label strong {
+    font-size: 20px;
+  }
+  .empty-state {
+    min-height: 390px;
+  }
+  .section-title > span {
+    font-size: 9px;
+  }
+  .waiting-panel {
+    flex-wrap: wrap;
+  }
+  .waiting-panel > span:last-child {
+    margin-left: 39px;
+  }
+  .toast {
+    bottom: 12px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
+}
+
+/* Le mode projection occupe le viewport ; la grille reçoit tout l'espace restant. */
+.presentation {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: #f6f7f2;
+}
+.presentation .roster,
+.presentation .draw-toolbar,
+.presentation .main-footer,
+.presentation .toast {
+  display: none;
+}
+.presentation .topbar {
+  flex: 0 0 clamp(40px, 7vh, 70px);
+  height: auto;
+  padding: 0 1.5vw;
+}
+.presentation .brand {
+  font-size: clamp(14px, 2.5vh, 24px);
+}
+.presentation .brand-symbol {
+  height: 4.5vh;
+  width: 4.5vh;
+  font-size: 3vh;
+  border-radius: 1vh;
+}
+.presentation .outline {
+  padding: 0.6vh 1vw;
+  font-size: clamp(10px, 1.5vh, 14px);
+}
+.presentation .workspace {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+}
+.presentation main {
+  flex: 1;
+  min-height: 0;
+  padding: 1vh 1vw;
+  gap: 1vh;
+}
+.presentation .section-title {
+  flex-shrink: 0;
+  margin: 0;
+}
+.presentation .section-title h2 {
+  font-size: clamp(12px, 2vh, 22px);
+}
+.presentation .section-title > span {
+  font-size: clamp(9px, 1.4vh, 14px);
+}
+.presentation .board-grid {
+  flex: 1;
+  min-height: 0;
+  grid-template-columns: repeat(var(--projection-tracks), minmax(0, 1fr));
+  grid-template-rows: repeat(var(--projection-rows), minmax(0, 1fr));
+  gap: 1vh 1vw;
+}
+.presentation .board-card {
+  grid-column: span var(--projection-span);
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  min-width: 0;
+  container-type: size;
+  border-radius: 1.5vh;
+}
+.presentation .board-label {
+  flex: 0 0 20%;
+  min-height: 0;
+  padding: 0 2cqw;
+  gap: 1cqw;
+}
+.presentation .board-label strong {
+  font-size: min(12cqh, 6cqw);
+}
+.presentation .board-label > span:first-child {
+  font-size: min(7cqh, 3cqw);
+  letter-spacing: 0.2cqw;
+}
+.presentation .board-icon {
+  font-size: min(10cqh, 5cqw);
+}
+.presentation .matchup {
+  flex: 1;
+  min-height: 0;
+  grid-template-columns: minmax(0, 1fr) 5% minmax(0, 1fr);
+  gap: 1cqw;
+  padding: 2cqh 2cqw;
+}
+.presentation .team {
+  font-size: var(--fitted-name-size, min(8cqw, 18cqh));
+  line-height: 1.12;
+  gap: 3cqh;
+  align-items: stretch;
+  letter-spacing: -0.03em;
+}
+.presentation .team > .player-label {
+  width: 100%;
+  white-space: normal;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+.presentation .versus {
+  flex-direction: column;
+  font-size: min(6cqh, 2cqw);
+  gap: 2cqh;
+}
+.presentation .versus span {
+  width: 1px;
+  height: 8cqh;
+}
+.presentation .waiting-panel {
+  flex-shrink: 0;
+  margin: 0;
+  padding: 0.6vh 1vw;
+  gap: 1vw;
+  flex-wrap: nowrap;
+}
+.presentation .waiting-panel h3 {
+  font-size: 1.5vh;
+  margin: 0;
+}
+.presentation .waiting-panel p {
+  font-size: 2vh;
+}
+.presentation .waiting-panel > span:last-child {
+  margin-left: auto;
+  font-size: 1.4vh;
+}
+.presentation .waiting-icon {
+  font-size: 3vh;
+}
+.presentation .warning {
+  flex-shrink: 0;
+  margin: 0;
+  padding: 0.5vh 1vw;
+  font-size: 1.5vh;
+}
+.presentation .empty-state {
+  min-height: 0;
+  padding: 1vh 1vw;
+  overflow: hidden;
+}
+
+.match-format {
+  margin-left: auto;
+  font-size: 10px;
+  font-weight: 700;
+  color: #365638;
+  white-space: nowrap;
+}
+.presentation .match-format {
+  font-size: min(7cqh, 3cqw);
+}
+
+/* L'initiale est secondaire et ne se sépare jamais de la fin du prénom. */
+.name-ending {
+  white-space: nowrap;
+}
+.family-initial {
+  font-size: 0.55em;
+  font-weight: 600;
+  margin-left: 0.18em;
+  line-height: 1;
+  letter-spacing: 0;
+}
